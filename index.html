@@ -8,91 +8,98 @@
     <meta name="description" content="Memory Card Game">
     <title>Memory Card Game</title>
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Holtwood One SC' rel='stylesheet'>
     <link href="css\app.css" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h1>Let the game begin!!</h1>
-        <ul class="stars">
-            <li>
-                <i class="fa fa-star"></i>
-            </li>
-            <li>
-                <i class="fa fa-star"></i>
-            </li>
-            <li>
-                <i class="fa fa-star"></i>
-            </li>
-        </ul>
-        <span>Moves</span>
-        <button>Restart</button>
-        <span>Timer</span>
-    </header>
+    <div class="container">
+        <header class="game_title">
+            <h1 class="title_text">MEMORY CARD GAME</h1>
+        </header>
 
-    <main class="card_dashboard">
-        <ul class="deck">
-            <li class="card">
-                <i class="fa fa-heartbeat"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-android"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-github-alt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-space-shuttle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-motorcycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-heartbeat"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bug"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cloud"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-motorcycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bug"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-flash"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-github-alt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-android"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-flash"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cloud"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-space-shuttle"></i>
-            </li>
-        </ul>
-    </main>
+        <section class="progress">
+            <ul class="stars">
+                <li class="star">
+                    <i class="fa fa-star"></i>
+                </li>
+                <li class="star">
+                    <i class="fa fa-star"></i>
+                </li>
+                <li class="star">
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+            <span>Moves</span>
+            <span>Timer</span>
+            <span class="fa fa-refresh"></span>
+        </section>
+        
 
-    <footer>
-        <table>
-            <td>
-                <th>Times Played</th>
-                <th>Wins</th>
-                <th>Loses</th>
-            </td>
-        </table>
-        <p>Copirights</p>
-    </footer>    
+        <main class="dashboard">
+            <ul class="deck">
+                <li class="card">
+                    <i class="fa fa-heartbeat card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-android card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-github-alt card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-space-shuttle card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-motorcycle card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-heartbeat card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bug card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-cloud card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-motorcycle card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-bug card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-flash card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-github-alt card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-android card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-flash card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-cloud card_icon"></i>
+                </li>
+                <li class="card">
+                    <i class="fa fa-space-shuttle card_icon"></i>
+                </li>
+            </ul>
+        </main>
+
+        <footer>
+            <table>
+                <td>
+                    <th>Times Played</th>
+                    <th>Wins</th>
+                    <th>Loses</th>
+                </td>
+            </table>
+            <p>Copirights</p>
+        </footer>
+    </div>    
     <script src="js/app.js"></script>
 </body>
 
