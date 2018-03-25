@@ -3,14 +3,18 @@
  */
 const cards = ["fa fa-android","fa fa-android","fa fa-github-alt","fa fa-github-alt","fa fa-space-shuttle","fa fa-space-shuttle","fa fa-motorcycle","fa fa-motorcycle","fa fa-bug","fa fa-bug","fa fa-cloud","fa fa-cloud","fa fa-flash","fa fa-flash","fa fa-heartbeat","fa fa-heartbeat"];
 const deck = document.querySelector('.deck');
+generateListItems();
 
 
 //Function that loops through each card, creates its HTML
 //and add it to the page. It works!!
+//We updated the function to shuffle the list of cards,
+//before adding them to the page. It works!!!
 function generateListItems () {
 	const fragment = document.createDocumentFragment();
+	const shuffledCards = shuffle(cards);
 
-	for (card of cards) {
+	for (card of shuffledCards) {
 		const newLiElement = document.createElement('li');
 		newLiElement.className = "card";
 
@@ -23,14 +27,6 @@ function generateListItems () {
 
 	deck.appendChild(fragment);
 }
-
-generateListItems();
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
