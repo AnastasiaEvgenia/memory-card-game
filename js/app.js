@@ -1,20 +1,14 @@
-//Main Program
+//Main Program--------------------------------------------------------------
 const cards = ["fa fa-android","fa fa-android","fa fa-github-alt","fa fa-github-alt","fa fa-space-shuttle","fa fa-space-shuttle","fa fa-motorcycle","fa fa-motorcycle","fa fa-bug","fa fa-bug","fa fa-cloud","fa fa-cloud","fa fa-flash","fa fa-flash","fa fa-heartbeat","fa fa-heartbeat"];
 const deck = document.querySelector('.deck');
 const shuffledCards = shuffle(cards);
-const listOfClickedCards;
+let openedCardsList = [];
 generateListItems();
 
-//Create event listener that flips card face up
-//when it is clicked. You will have to reconfigure
-//the openCard function bellow too.
-// const clickedCard = document.querySelectorAll('.card');
-// clickedCard.addEventListener("click", function () {
-// 	openCard();
-// });
-
-document.querySelector('.deck').addEventListener( 'click', openCard );
-
+document.querySelector('.deck').addEventListener( 'click', function (evt) {
+	openCard(evt);
+	addCardsToNewList(evt);
+} );
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -30,13 +24,11 @@ function shuffle(array) {
 
     return array;
 }
-
+//---------------------------------------------------------------------------
 
 /*
-Function that loops through each card, creates its HTML
-and add it to the page. It works!!
-We updated the function to shuffle the list of cards,
-before adding them to the page. It works!!!
+Function to shuffle the list of cards and adds them to
+the dashboard flipped down.
 */
 function generateListItems () {
 	const fragment = document.createDocumentFragment();
@@ -55,24 +47,23 @@ function generateListItems () {
 	deck.appendChild(fragment);
 }
 
-//Function that opens a card when it is clicked
-function openCard (evt) {
-    if (evt.target.nodeName === 'LI') {  // ← verifies target is desired element
-        console.log('A li was clicked with text ' + evt.target.textContent);
-       	console.log(evt.target);
-       	evt.target.classList.add("open");
+//Function that opens a card
+function openCard (x) {
+    if (x.target.nodeName === 'LI') {  // ← verifies target is desired element
+        console.log('A li was clicked with text ' + x.target.textContent);
+       	console.log(x.target);
+       	x.target.classList.add("open");
     }
 }
 
-
-//Function to match all cards. Needs to be regonfigured
-//too, in the event listener
- function matchCards () {
-	const matchCards = deck.getElementsByTagName('li');
-	for (card of matchCards) {
-		card.classList.add("match");
-	}
+//Function that adds the class of the clicked card
+//in a new list
+function addCardsToNewList (x) {
+	const clickedCardClass = x.target.childNodes[0].getAttribute("class");
+	openedCardsList.push(clickedCardClass);
+	console.log(openedCardsList);
 }
+
 
 //Function for different cards. Needs to be regonfigured
 //too, in the event listener
