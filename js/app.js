@@ -1,32 +1,20 @@
-/*
- * Create a list that holds all of your cards
- */
+//Main Program
 const cards = ["fa fa-android","fa fa-android","fa fa-github-alt","fa fa-github-alt","fa fa-space-shuttle","fa fa-space-shuttle","fa fa-motorcycle","fa fa-motorcycle","fa fa-bug","fa fa-bug","fa fa-cloud","fa fa-cloud","fa fa-flash","fa fa-flash","fa fa-heartbeat","fa fa-heartbeat"];
 const deck = document.querySelector('.deck');
+const shuffledCards = shuffle(cards);
+const listOfClickedCards;
 generateListItems();
 
+//Create event listener that flips card face up
+//when it is clicked. You will have to reconfigure
+//the openCard function bellow too.
+// const clickedCard = document.querySelectorAll('.card');
+// clickedCard.addEventListener("click", function () {
+// 	openCard();
+// });
 
-//Function that loops through each card, creates its HTML
-//and add it to the page. It works!!
-//We updated the function to shuffle the list of cards,
-//before adding them to the page. It works!!!
-function generateListItems () {
-	const fragment = document.createDocumentFragment();
-	const shuffledCards = shuffle(cards);
+document.querySelector('.deck').addEventListener( 'click', openCard );
 
-	for (card of shuffledCards) {
-		const newLiElement = document.createElement('li');
-		newLiElement.className = "card";
-
-		const newIElement = document.createElement('i');
-		newIElement.className = card;
-
-		newLiElement.appendChild(newIElement);
-		fragment.appendChild(newLiElement);
-	}
-
-	deck.appendChild(fragment);
-}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -45,6 +33,57 @@ function shuffle(array) {
 
 
 /*
+Function that loops through each card, creates its HTML
+and add it to the page. It works!!
+We updated the function to shuffle the list of cards,
+before adding them to the page. It works!!!
+*/
+function generateListItems () {
+	const fragment = document.createDocumentFragment();
+	
+	for (card of shuffledCards) {
+		const newLiElement = document.createElement('li');
+		newLiElement.className = "card";
+
+		const newIElement = document.createElement('i');
+		newIElement.className = card;
+
+		newLiElement.appendChild(newIElement);
+		fragment.appendChild(newLiElement);
+	}
+
+	deck.appendChild(fragment);
+}
+
+//Function that opens a card when it is clicked
+function openCard (evt) {
+    if (evt.target.nodeName === 'LI') {  // ← verifies target is desired element
+        console.log('A li was clicked with text ' + evt.target.textContent);
+       	console.log(evt.target);
+       	evt.target.classList.add("open");
+    }
+}
+
+
+//Function to match all cards. Needs to be regonfigured
+//too, in the event listener
+ function matchCards () {
+	const matchCards = deck.getElementsByTagName('li');
+	for (card of matchCards) {
+		card.classList.add("match");
+	}
+}
+
+//Function for different cards. Needs to be regonfigured
+//too, in the event listener
+ function noMatchCards () {
+	const noMatchCards = deck.getElementsByTagName('li');
+	for (card of noMatchCards) {
+		card.classList.add("no_match");
+	}
+}
+
+/*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
@@ -54,3 +93,5 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+
