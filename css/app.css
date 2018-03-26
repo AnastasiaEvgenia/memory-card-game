@@ -132,8 +132,10 @@ match class: when player finds two same cards */
 }
 
 .match {
-	background-color: palegreen; 
+	background-color: palegreen;
+	transform: rotateY(-180deg);
 	font-size: 33px;
+	cursor: default;
 }
 
 .no_match {
