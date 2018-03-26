@@ -97,6 +97,7 @@ body {
 	/* By putting font size 0 icon becomes invisible,
 	resulting in looking like the card is turned over!!! */
 	font-size: 0;
+	transition-duration: 0.5s;
 }
 
 .star,

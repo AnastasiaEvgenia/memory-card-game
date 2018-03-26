@@ -77,8 +77,16 @@ function check (x) {
 			cardOpen[0].classList.remove("open");
 			cardOpen[1].classList.remove("open");
 			openedCards.splice(0,2);
-			}else{
-
-			}
+		}else{
+			let cardOpen = document.querySelectorAll('.open');
+			cardOpen[0].classList.add("no_match");
+			cardOpen[1].classList.add("no_match");
+			setTimeout(function () {
+				cardOpen[0].classList.remove("open", "no_match");
+				cardOpen[1].classList.remove("open", "no_match");
+			}, 500);
+			
+			openedCards.splice(0,2);
+		}
 	}
 }
