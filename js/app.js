@@ -1,16 +1,29 @@
-//Main Program--------------------------------------------------------------
-const cards = ["fa fa-android","fa fa-android","fa fa-github-alt","fa fa-github-alt","fa fa-space-shuttle","fa fa-space-shuttle","fa fa-motorcycle","fa fa-motorcycle","fa fa-bug","fa fa-bug","fa fa-cloud","fa fa-cloud","fa fa-flash","fa fa-flash","fa fa-heartbeat","fa fa-heartbeat"];
+//-----------MAIN PROGRAM-----------------------------------------------
+const cardIcons = ["fa fa-android","fa fa-android","fa fa-github-alt","fa fa-github-alt","fa fa-space-shuttle","fa fa-space-shuttle","fa fa-motorcycle","fa fa-motorcycle","fa fa-bug","fa fa-bug","fa fa-cloud","fa fa-cloud","fa fa-flash","fa fa-flash","fa fa-heartbeat","fa fa-heartbeat"];
+
 const deck = document.querySelector('.deck');
+const cards = document.querySelectorAll('.card');
+const cardOpen = document.querySelectorAll('.open');
+const cardMatch = document.querySelectorAll('.match');
+const cardNoMatch = document.querySelectorAll('.no_match');
+
+//shufle cards(icons)
 const shuffledCards = shuffle(cards);
-let openedCardsList = [];
+let openedCards = [];
+
+//create grid
 generateListItems();
 
-document.querySelector('.deck').addEventListener( 'click', function (evt) {
-	openCard(evt);
-	addCardsToNewList(evt);
+//add one event listener to cards parent element <ul>
+deck.addEventListener( 'click', function (evt) {
+
 } );
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+
+
+//----------FUNCTIONS DECLARATIONS-----------------------------------------
+
+// Shuffle cards function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -24,65 +37,27 @@ function shuffle(array) {
 
     return array;
 }
-//---------------------------------------------------------------------------
 
-/*
-Function to shuffle the list of cards and adds them to
-the dashboard flipped down.
-*/
-function generateListItems () {
+// Arrange cards in dashboard in a 4x4 grid randomly
+function generateDashboard () {
 	const fragment = document.createDocumentFragment();
 	
 	for (card of shuffledCards) {
-		const newLiElement = document.createElement('li');
-		newLiElement.className = "card";
+		const newListItem = document.createElement('li');
+		newListItem.className = "card";
 
-		const newIElement = document.createElement('i');
-		newIElement.className = card;
+		const cardIcon = document.createElement('i');
+		cardIcon.className = card;
 
-		newLiElement.appendChild(newIElement);
-		fragment.appendChild(newLiElement);
+		newListItem.appendChild(cardIcon);
+		fragment.appendChild(newListItem);
 	}
 
 	deck.appendChild(fragment);
 }
 
-//Function that opens a card
 function openCard (x) {
-    if (x.target.nodeName === 'LI') {  // ← verifies target is desired element
-        console.log('A li was clicked with text ' + x.target.textContent);
-       	console.log(x.target);
+    if (x.target.nodeName === 'LI') {  
        	x.target.classList.add("open");
     }
 }
-
-//Function that adds the class of the clicked card
-//in a new list
-function addCardsToNewList (x) {
-	const clickedCardClass = x.target.childNodes[0].getAttribute("class");
-	openedCardsList.push(clickedCardClass);
-	console.log(openedCardsList);
-}
-
-
-//Function for different cards. Needs to be regonfigured
-//too, in the event listener
- function noMatchCards () {
-	const noMatchCards = deck.getElementsByTagName('li');
-	for (card of noMatchCards) {
-		card.classList.add("no_match");
-	}
-}
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
-
