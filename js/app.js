@@ -4,21 +4,26 @@ const cardIcons = ["fa fa-android", "fa fa-android", "fa fa-github-alt", "fa fa-
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
 
-const cardMatch = document.querySelectorAll('.match');
-const cardNoMatch = document.querySelectorAll('.no_match');
+let starOne = document.querySelector('.star_one i');
+let starTwo = document.querySelector('.star_two i');
+let starThree = document.querySelector('.star_three i');
+console.log(starOne);
+console.log(starTwo);
+console.log(starThree);
 
 //shufle cards(icons)
 const shuffledCards = shuffle(cardIcons);
 
 let openedCards = [];
 let previousOpenedCard = null; //keep a reference to the first opened card element
+let movesCounter = 0;
 
 //create grid
 generateDashboard();
 
 //add one event listener to cards parent element <ul>
 deck.addEventListener('click', function(evt) {
-	//If checks suggested by George Alexandris
+	//CREDIT: If checks suggested by George Alexandris!!
 	//check that target is a <li> element
 	if (evt.target.nodeName === 'LI') {
 		//check that the card is not already matched
@@ -31,6 +36,8 @@ deck.addEventListener('click', function(evt) {
 					previousOpenedCard = evt.target;
 					openCard(evt);
 					check(evt);
+					movesCounter = movesCounter + 1;
+					console.log(movesCounter);
 				}
 				//open this card only after you check that it is not the
 				//same with the one previously opened
@@ -38,13 +45,16 @@ deck.addEventListener('click', function(evt) {
 					previousOpenedCard = null;
 					openCard(evt);
 					check(evt);
+					movesCounter = movesCounter + 1;
+					console.log(movesCounter);
 				}
 			}
 		}
 	}
 
+	numberOfMoves(movesCounter);
+	starRating(movesCounter);
 });
-
 //----------FUNCTIONS DECLARATIONS-----------------------------------------
 
 // Shuffle cards function from http://stackoverflow.com/a/2450976
@@ -112,4 +122,52 @@ function check (x) {
             }, 500);
         }
     }
+}
+
+// Checking number of moves
+function numberOfMoves (x) {
+	let cardMatch = document.querySelectorAll('.match');
+	switch(x) {
+		case (x<=16):
+			if (cardMatch.length == 16) {
+				console.log("game end in "+ x +"moves");
+			}
+			console.log(starOne);
+			break;
+		
+		case (x<=20):
+			if (cardMatch.length == 16) {
+				console.log("game end in "+ x +"moves");
+			}
+			console.log(starOne);
+			break;
+		
+		case (x<=24):
+			if (cardMatch.length == 16) {
+				console.log("game end in "+ x +"moves");
+			}
+			console.log(starOne);
+			break;
+		
+		default: 
+			if (cardMatch.length == 16) {
+				console.log("game end in "+ x +"moves");
+			}
+	}
+}
+
+// Star Ratings according to moves done before finishing the game
+function starRating(x) {
+	switch(x) {
+		case 17:
+			starOne.classList.replace("fa-star", "fa-star-o");
+			break;
+		case 21:
+			starTwo.classList.replace("fa-star", "fa-star-o");
+			break;
+		case (25):
+			starThree.classList.replace("fa-star", "fa-star-o");
+			break;
+		default: break;
+	}
 }
