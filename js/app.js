@@ -4,17 +4,21 @@ const cardIcons = ["fa fa-android", "fa fa-android", "fa fa-github-alt", "fa fa-
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
 
-let starOne = document.querySelector('.star_one i');
-let starTwo = document.querySelector('.star_two i');
-let starThree = document.querySelector('.star_three i');
-let moves = document.querySelector('.moves');
+const starOne = document.querySelector('.star_one i');
+const starTwo = document.querySelector('.star_two i');
+const starThree = document.querySelector('.star_three i');
+
+const moves = document.querySelector('.moves');
+const timer = document.querySelector('.timer');
+const restartButton = document.querySelector('.fa-refresh');
 
 //shufle cards(icons)
 const shuffledCards = shuffle(cardIcons);
 
 let openedCards = [];
-let previousOpenedCard = null; //keep a reference to the first opened card element
+let previousOpenedCard = null;
 let movesCounter = 0;
+let interval;
 
 //create grid
 generateDashboard();
@@ -53,10 +57,19 @@ deck.addEventListener('click', function(evt) {
 
 	numberOfMoves(movesCounter);
 	starRating(movesCounter);
+
 	if (movesCounter == 1) {
 		gameTimer();
 	}
+
+	gameEnd ();
 });
+
+//restart game when restart button is clicked
+restartButton.addEventListener('click', function(evt) {
+	restartGame (evt);
+}); 
+
 //----------FUNCTIONS DECLARATIONS-----------------------------------------
 
 // Shuffle cards function from http://stackoverflow.com/a/2450976
@@ -132,28 +145,21 @@ function numberOfMoves (x) {
 	switch(x) {
 		case (x<=16):
 			if (cardMatch.length == 16) {
-				console.log("game end in "+ x +"moves");
 			}
-			console.log(starOne);
 			break;
 		
 		case (x<=20):
 			if (cardMatch.length == 16) {
-				console.log("game end in "+ x +"moves");
 			}
-			console.log(starOne);
 			break;
 		
 		case (x<=24):
 			if (cardMatch.length == 16) {
-				console.log("game end in "+ x +"moves");
 			}
-			console.log(starOne);
 			break;
 		
 		default: 
 			if (cardMatch.length == 16) {
-				console.log("game end in "+ x +"moves");
 			}
 	}
 }
@@ -164,10 +170,10 @@ function starRating(x) {
 		case 17:
 			starOne.classList.replace("fa-star", "fa-star-o");
 			break;
-		case 21:
+		case 25:
 			starTwo.classList.replace("fa-star", "fa-star-o");
 			break;
-		case (25):
+		case (31):
 			starThree.classList.replace("fa-star", "fa-star-o");
 			break;
 		default: break;
@@ -176,10 +182,10 @@ function starRating(x) {
 
 // Create Timer
 function gameTimer () {
-	let timer = document.querySelector('.timer');
+	
 	let sec = 0;
 	let min = 0;
-	let interval = setInterval( function () {
+	interval = setInterval( function () {
 		timer.innerHTML = min+ "m " +sec+ "s";
 		sec++;
 		if (sec == 60) {
@@ -187,4 +193,38 @@ function gameTimer () {
 			min++;
 		}
 	},1000);
+}
+
+
+//Restart Game Button. Functionality:
+function restartGame (x) {
+	//make sure openedCards array is emptied
+	openedCards.splice(0, 2);
+
+	//restore dashboard with cards down
+	deck.innerHTML = "";
+
+	//reshuffle cards
+	generateDashboard();
+
+	//restore star ratings
+	starOne.classList.replace("fa-star-o", "fa-star");
+	starTwo.classList.replace("fa-star-o", "fa-star");
+	starThree.classList.replace("fa-star-o", "fa-star");
+
+	//restore movesCounter
+	movesCounter = 0;
+	moves.innerHTML = "Moves " + movesCounter;
+
+	//restore timer
+	clearInterval(interval);
+	timer.innerHTML = "0m " + "0s";
+}
+
+function gameEnd () {
+	let cardMatch = document.querySelectorAll('.match');
+	if (cardMatch.length == 16) {
+		clearInterval(interval);
+		console.log("game ended");
+	}
 }
