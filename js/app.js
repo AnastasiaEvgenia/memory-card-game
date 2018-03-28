@@ -12,6 +12,7 @@ const moves = document.querySelector('.moves');
 const timer = document.querySelector('.timer');
 const restartButton = document.querySelector('.fa-refresh');
 
+
 //shufle cards(icons)
 const shuffledCards = shuffle(cardIcons);
 
@@ -63,12 +64,15 @@ deck.addEventListener('click', function(evt) {
 	}
 
 	gameEnd ();
+
 });
 
 //restart game when restart button is clicked
 restartButton.addEventListener('click', function(evt) {
 	restartGame (evt);
-}); 
+});
+
+
 
 //----------FUNCTIONS DECLARATIONS-----------------------------------------
 
@@ -225,6 +229,54 @@ function gameEnd () {
 	let cardMatch = document.querySelectorAll('.match');
 	if (cardMatch.length == 16) {
 		clearInterval(interval);
-		console.log("game ended");
+
+		//hide game panel
+		const container = document.querySelector('.container');
+		container.classList = "hide_container";
+
+		//congratulation screen
+		const bodyContainer = document.querySelector('.body_container');
+		const numberOfStars = document.querySelectorAll('.fa-star');
+		const congratsPanel = document.createElement('DIV');
+		congratsPanel.classList = "congrats_panel";
+		congratsPanel.innerHTML =
+		`
+		<span class="fa fa-check-circle-o"></span>
+		<p>Congratulation! You finished the Game!</p>
+		<p>Game finished in: ${movesCounter} moves, with ${numberOfStars.length} stars.</p>
+		<p>Game time: ${timer.textContent}.</p>
+		<p>Play again? <button class="fa fa-refresh refresh"></button></p>
+		`
+		bodyContainer.appendChild(congratsPanel);
+
+		const refresh = document.querySelector('.refresh');
+
+		refresh.addEventListener('click', function(evt) {
+
+		congratsPanel.classList = "hide_container";
+		container.classList = "container";
+
+		openedCards.splice(0, 2);
+
+		//restore dashboard with cards down
+		deck.innerHTML = "";
+
+		//reshuffle cards
+		generateDashboard();
+
+		//restore star ratings
+		starOne.classList.replace("fa-star-o", "fa-star");
+		starTwo.classList.replace("fa-star-o", "fa-star");
+		starThree.classList.replace("fa-star-o", "fa-star");
+
+		//restore movesCounter
+		movesCounter = 0;
+		moves.innerHTML = "Moves " + movesCounter;
+
+		//restore timer
+		clearInterval(interval);
+		timer.innerHTML = "0m " + "0s";
+		});
+
 	}
 }

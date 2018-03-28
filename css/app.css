@@ -144,4 +144,32 @@ match class: when player finds two same cards */
 	font-size: 33px;
 }
 
+.hide_container {
+	display: none;
+}
 
+.congrats_panel{
+	background-color: #fae4e9;
+	border:  2px groove #E9967A;
+	border-radius: 10px;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+.fa-star {
+	color:  yellow;
+}
+
+.fa-refresh {
+	color: green;
+}
+
+.fa-check-circle-o {
+	color: lightgreen;
+	justify-content: center;
+	padding: 0 50%;
+}
