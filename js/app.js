@@ -53,6 +53,9 @@ deck.addEventListener('click', function(evt) {
 
 	numberOfMoves(movesCounter);
 	starRating(movesCounter);
+	if (movesCounter == 1) {
+		gameTimer();
+	}
 });
 //----------FUNCTIONS DECLARATIONS-----------------------------------------
 
@@ -173,7 +176,15 @@ function starRating(x) {
 
 // Create Timer
 function gameTimer () {
-	setInterval (function () {
-		
-	},1000)
+	let timer = document.querySelector('.timer');
+	let sec = 0;
+	let min = 0;
+	let interval = setInterval( function () {
+		timer.innerHTML = min+ "m " +sec+ "s";
+		sec++;
+		if (sec == 60) {
+			sec = 0;
+			min++;
+		}
+	},1000);
 }
