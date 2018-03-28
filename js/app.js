@@ -7,9 +7,7 @@ const cards = document.querySelectorAll('.card');
 let starOne = document.querySelector('.star_one i');
 let starTwo = document.querySelector('.star_two i');
 let starThree = document.querySelector('.star_three i');
-console.log(starOne);
-console.log(starTwo);
-console.log(starThree);
+let moves = document.querySelector('.moves');
 
 //shufle cards(icons)
 const shuffledCards = shuffle(cardIcons);
@@ -37,8 +35,9 @@ deck.addEventListener('click', function(evt) {
 					openCard(evt);
 					check(evt);
 					movesCounter = movesCounter + 1;
-					console.log(movesCounter);
+					moves.textContent = "Moves " + movesCounter; 
 				}
+
 				//open this card only after you check that it is not the
 				//same with the one previously opened
 				if (previousOpenedCard != evt.target) {
@@ -46,7 +45,7 @@ deck.addEventListener('click', function(evt) {
 					openCard(evt);
 					check(evt);
 					movesCounter = movesCounter + 1;
-					console.log(movesCounter);
+					moves.textContent = "Moves " + movesCounter;
 				}
 			}
 		}
@@ -170,4 +169,11 @@ function starRating(x) {
 			break;
 		default: break;
 	}
+}
+
+// Create Timer
+function gameTimer () {
+	setInterval (function () {
+		
+	},1000)
 }
