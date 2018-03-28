@@ -225,6 +225,7 @@ function restartGame (x) {
 	timer.innerHTML = "0m " + "0s";
 }
 
+//When the game ends.
 function gameEnd () {
 	let cardMatch = document.querySelectorAll('.match');
 	if (cardMatch.length == 16) {
@@ -245,7 +246,7 @@ function gameEnd () {
 		<p>Congratulation! You finished the Game!</p>
 		<p>Game finished in: ${movesCounter} moves, with ${numberOfStars.length} stars.</p>
 		<p>Game time: ${timer.textContent}.</p>
-		<p>Play again? <button class="fa fa-refresh refresh"></button></p>
+		<p>Play again? <button class="fa fa-refresh refresh button_appearence"></button></p>
 		`
 		bodyContainer.appendChild(congratsPanel);
 
