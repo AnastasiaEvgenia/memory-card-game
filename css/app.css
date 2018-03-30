@@ -19,6 +19,7 @@ body {
 	font-family: 'Holtwood One SC';
 }
 
+
 .container {
 	display:  flex;
 	flex-direction: column;
@@ -29,12 +30,14 @@ body {
 	background: #ffffff url('../images/geometry2.png'); /* Background pattern from Subtle Patterns */
 }
 
+
 /* header styles */
 .game_title {
 	width: 100%;
 	height: auto;
 	text-align: center;
 }
+
 
 .title_text {
 	margin: 0;
@@ -72,6 +75,7 @@ body {
 	max-width: 1000px;
 }
 
+
 .deck {
 	display: flex;
 	flex-wrap: wrap;
@@ -85,6 +89,7 @@ body {
 	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
 	background: linear-gradient(160deg, #000 0%, #aa7ecd 100%);
 }
+
 
 /* Cards styles */
 .card {
@@ -112,6 +117,7 @@ body {
     font-size: 23px;
 }
 
+
 .match {
 	background-color: palegreen;
 	transform: rotateY(-180deg);
@@ -119,10 +125,12 @@ body {
 	cursor: default;
 }
 
+
 .no_match {
 	background-color: red; 
 	font-size: 23px;
 }
+
 
 /* Stars styles */
 .star {
@@ -130,25 +138,30 @@ body {
 	display: inline-block;
 }
 
+
 .stars {
 	margin: 0;
 	padding: 0;
 }
+
 
 /* Font awesome icon classes styles */
 .fa-star {
 	color: yellow;
 }
 
+
 .fa-refresh {
 	color: green;
 }
+
 
 .fa-check-circle-o {
 	color: lightgreen;
 	justify-content: center;
 	padding: 0 50%;
 }
+
 
 /* Button styles */
 .button_appearence {
@@ -162,18 +175,21 @@ body {
 
 
 /* Footer styles */
-footer {
+.copyrights {
 	width: 80%;
 	height: auto;
 	max-width: 800px;
-	font-size: 0.7em;
+	font-size: 0.6em;
 	padding: 5px 0 0;
+	text-align: center;
 }
+
 
 /* End game and Congratulation panel styles */
 .hide_container {
 	display: none;
 }
+
 
 .congrats_panel{
 	background-color: #fae4e9;
@@ -187,6 +203,7 @@ footer {
 	text-align: center;
 	padding: 10px;
 }
+
 
 /* Media queries for the icons size across various devices screens */
 @media screen and (min-height: 400px) {
@@ -205,6 +222,7 @@ footer {
 	}
 } 	
 
+
 @media screen and (min-height: 650px) {
 	.open,
 	.match,
@@ -213,6 +231,7 @@ footer {
 	}
 } 	
 
+
 @media screen and (min-height: 650px) {
 	.open,
 	.match,
@@ -220,12 +239,14 @@ footer {
 		font-size: 73px;
 	}
 
+
 @media screen and (min-height: 850px) {
 	.open,
 	.match,
 	.no_match {
 		font-size: 83px;
 	}
+
 
 @media screen and (max-height: 900px) and (max-width: 500px) {
 	.open,
