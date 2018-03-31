@@ -243,8 +243,9 @@ function gameEnd () {
 		congratsPanel.innerHTML =
 		`
 		<span class="fa fa-check-circle-o"></span>
-		<p>Congratulation! You finished the Game!</p>
-		<p>Game finished in: ${movesCounter} moves, with ${numberOfStars.length} stars.</p>
+		<h2>Congratulation! You finished the Game!</h2>
+		<p>Game finished in: ${movesCounter} moves.</p>
+		<p>Your star rating is: ${numberOfStars.length} stars.</p>
 		<p>Game time: ${timer.textContent}.</p>
 		<p>Play again? <button class="fa fa-refresh refresh button_appearence"></button></p>
 		`
