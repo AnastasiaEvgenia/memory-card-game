@@ -15,10 +15,10 @@ been matched and appear flipped up.
 ## Extra Features
 
 The game contains:
-..* A timer to calculate how much time the player did to win the game.
-..* A move's counter to caclulate number of moves the player did to win.
-..* A three star rating depending on number of total moves.
-..* A restart button.
+* A timer to calculate how much time the player did to win the game.
+* A move's counter to caclulate number of moves the player did to win.
+* A three star rating depending on number of total moves.
+* A restart button.
 
 ## End Game
 
