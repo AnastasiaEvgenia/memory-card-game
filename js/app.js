@@ -13,8 +13,7 @@ const timer = document.querySelector('.timer');
 const restartButton = document.querySelector('.fa-refresh');
 
 
-//shufle cards(icons)
-const shuffledCards = shuffle(cardIcons);
+
 
 let openedCards = [];
 let previousOpenedCard = null;
@@ -78,7 +77,7 @@ restartButton.addEventListener('click', function(evt) {
 
 // Shuffle cards function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -95,6 +94,9 @@ function shuffle(array) {
 // Arrange cards in dashboard in a 4x4 grid randomly
 function generateDashboard() {
     const fragment = document.createDocumentFragment();
+
+    //shufle cards(icons)
+	let shuffledCards = shuffle(cardIcons);
 
     for (card of shuffledCards) {
         const newListItem = document.createElement('li');
@@ -171,15 +173,15 @@ function numberOfMoves (x) {
 // Star Ratings according to moves done before finishing the game
 function starRating(x) {
 	switch(x) {
-		case 17:
+		case 22:
 			starOne.classList.replace("fa-star", "fa-star-o");
 			break;
-		case 25:
+		case 28:
 			starTwo.classList.replace("fa-star", "fa-star-o");
 			break;
-		case (31):
-			starThree.classList.replace("fa-star", "fa-star-o");
-			break;
+		// case (30):
+		// 	starThree.classList.replace("fa-star", "fa-star-o");
+		// 	break;
 		default: break;
 	}
 }
